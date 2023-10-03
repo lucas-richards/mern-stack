@@ -2,7 +2,8 @@ const User = require('../../models/user')
 const jwt = require('jsonwebtoken')
 
 module.exports =  {
-    create
+    create,
+    checkToken
 }
 
 async function create(req, res) {
@@ -19,6 +20,11 @@ async function create(req, res) {
     // 400 = Bad Request
     res.status(400).json(err);
   }
+}
+
+function checkToken(req, res) {
+  console.log('req.user', req.user)
+  res.json(req.exp)
 }
 
 /*-- Helper Functions --*/
